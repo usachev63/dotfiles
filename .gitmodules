@@ -1,0 +1,3 @@
+[submodule "common/nvim"]
+	path = common/nvim
+	url = git@github.com:sharkov63/nvim-cfg.git
