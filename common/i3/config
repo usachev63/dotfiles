@@ -7,6 +7,8 @@
 font pango:Hack 10
 
 ### TODO begin
+exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle,ctrl:nocaps
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -185,3 +187,5 @@ bar {
 #
 # Colorscheme end
 #
+
+smart_borders on
