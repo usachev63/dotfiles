@@ -1,0 +1,19 @@
+#!/bin/sh
+
+################################################################################
+#
+## My config for X window system
+#
+################################################################################
+
+# XkbModel: a safe fallback
+setxkbmap -model pc105
+# XkbLayout: switch between English (US) and Russian
+setxkbmap -layout us,ru
+# XkbOptions:
+# * Toggle layouts with Shift+Alt (or Alt+Shift)
+# * Bind capslock to ctrl
+setxkbmap option grp:alt_shift_toggle,ctrl:nocaps
+
+# Invoke global X session script
+. /etc/X11/Xsession
