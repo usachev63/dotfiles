@@ -147,7 +147,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 #
 # Requires 'maim' installed.
 # These can be install via apt.
-bindsym $mod+KP_Insert exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Ctrl+Print exec --no-startup-id scrot --freeze - | xclip -selection clipboard -t image/png
 
 #
 # Keybinds end
