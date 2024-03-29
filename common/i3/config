@@ -7,7 +7,7 @@
 font pango:Hack Bold 10
 
 # Set up i3lock-color screensaver for this X session
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --keylayout 0
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.dotfiles/common/xkb-force-us.sh i3lock --keylayout 0
 
 ### TODO begin
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle,ctrl:nocaps
@@ -50,12 +50,12 @@ set $mod Mod4
 # Start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 # Start rofi as an application launcher
-bindsym $mod+d exec "rofi -show drun"
-bindsym $mod+Shift+d exec "rofi -show run"
+bindsym $mod+d exec ~/.dotfiles/common/xkb-force-us.sh rofi -show drun
+bindsym $mod+Shift+d exec ~/.dotfiles/common/xkb-force-us.sh rofi -show run
 # Start rofi as a window switcher
-bindsym $mod+m exec "rofi -show window"
+bindsym $mod+m exec ~/.dotfiles/common/xkb-force-us.sh rofi -show window
 # Start rofi as a file browser
-bindsym $mod+f exec "rofi -show filebrowser"
+bindsym $mod+f exec ~/.dotfiles/common/xkb-force-us.sh rofi -show filebrowser
 
 # Kill focused window
 bindsym $mod+Shift+q kill
