@@ -49,6 +49,7 @@ set $mod Mod4
 
 # Start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+
 # Start rofi as an application launcher
 bindsym $mod+d exec ~/.dotfiles/common/xkb-force-us.sh rofi -show drun
 bindsym $mod+Shift+d exec ~/.dotfiles/common/xkb-force-us.sh rofi -show run
@@ -63,6 +64,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 # Restart i3 inplace (preserves session)
 bindsym $mod+Shift+r restart
+bindsym $mod+Shift+o exec xdg-screensaver activate
 # Exit i3 (log out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
