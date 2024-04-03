@@ -9,6 +9,11 @@ font pango:Hack Bold 10
 # Set up i3lock-color screensaver for this X session
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.dotfiles/common/xkb-force-us.sh i3lock --keylayout 0
 
+# i3-back: utility to switch to last focused window.
+#
+# Start up the daemon.
+exec --no-startup-id i3-back
+
 ### TODO begin
 exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle,ctrl:nocaps
 
@@ -75,6 +80,8 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
+bindsym $mod+BackSpace [con_mark=_back] focus
 
 # Move focused container
 bindsym $mod+Shift+h move left
