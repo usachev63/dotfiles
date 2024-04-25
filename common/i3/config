@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-font pango:Hack Bold 10
+font pango:JetBrainsMono Nerd Font 10
 
 # Set up i3lock-color screensaver for this X session
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.dotfiles/common/xkb-force-us.sh i3lock --keylayout 0
@@ -22,10 +22,6 @@ exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_
 exec --no-startup-id dex --autostart --environment i3
 
 exec --no-startup-id pactl set-default-sink alsa_output.pci-0000_04_00.6.HiFi__hw_Generic_1__sink
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
 
 exec --no-startup-id xrandr --output eDP --mode "1680x1050"
 ### TODO end
@@ -61,7 +57,7 @@ bindsym $mod+Shift+d exec ~/.dotfiles/common/xkb-force-us.sh rofi -show run
 # Start rofi as a window switcher
 bindsym $mod+m exec ~/.dotfiles/common/xkb-force-us.sh rofi -show window
 # Start rofi as a file browser
-bindsym $mod+f exec ~/.dotfiles/common/xkb-force-us.sh rofi -show filebrowser
+bindsym $mod+f exec ~/.dotfiles/common/xkb-force-us.sh rofi  -show find -modi find:~/.local/share/rofi/finder.sh
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -167,50 +163,64 @@ bindsym Ctrl+Print exec --no-startup-id scrot --freeze - | xclip -selection clip
 # Colorscheme begin
 #
 
-# Base16 PhD by Hennig Hasemann (http://leetless.de/vim.html)
-# template by Matt Parnell, @parnmatt
+set $rosewater #dc8a78
+set $flamingo #dd7878
+set $pink #ea76cb
+set $mauve #8839ef
+set $red #d20f39
+set $maroon #e64553
+set $peach #fe640b
+set $yellow #df8e1d
+set $green #40a02b
+set $teal #179299
+set $sky #04a5e5
+set $sapphire #209fb5
+set $blue #1e66f5
+set $lavender #7287fd
+set $text #4c4f69
+set $subtext1 #5c5f77
+set $subtext0 #6c6f85
+set $overlay2 #7c7f93
+set $overlay1 #8c8fa1
+set $overlay0 #9ca0b0
+set $surface2 #acb0be
+set $surface1 #bcc0cc
+set $surface0 #ccd0da
+set $base #eff1f5
+set $mantle #e6e9ef
+set $crust #dce0e8
 
-set $base00 #061229
-set $base01 #2a3448
-set $base02 #4d5666
-set $base03 #717885
-set $base04 #9a99a3
-set $base05 #b8bbc2
-set $base06 #dbdde0
-set $base07 #ffffff
-set $base08 #d07346
-set $base09 #f0a000
-set $base0A #fbd461
-set $base0B #99bf52
-set $base0C #72b9bf
-set $base0D #5299bf
-set $base0E #9989cc
-set $base0F #b08060
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
 
-client.focused $base0D $base0D $base00 $base01
-client.focused_inactive $base02 $base02 $base03 $base01
-client.unfocused $base01 $base01 $base03 $base01
-client.urgent $base02 $base08 $base07 $base08
-
+# bar
 bar {
-    status_command i3status
-    
-    colors {
-        separator $base03
-        background $base01
-        statusline $base05
-        focused_workspace $base0C $base0D $base00
-        active_workspace $base02 $base02 $base07
-        inactive_workspace $base01 $base01 $base03
-        urgent_workspace $base08 $base08 $base07
-    }
+  status_command i3status
+
+  colors {
+    background         $base
+    statusline         $text
+    focused_statusline $text
+    focused_separator  $base
+    focused_workspace  $base $base $green
+    active_workspace   $base $base $blue
+    inactive_workspace $base $base $surface1
+    urgent_workspace   $base $base $surface1
+    binding_mode       $base $base $surface1
+  }
 }
 
 #
 # Colorscheme end
 #
 
-smart_borders on
+default_border normal 3
+for_window [all] title_window_icon on
 
 # Apply setup-local settings
 include ~/.config/i3/local
