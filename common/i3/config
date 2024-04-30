@@ -50,6 +50,7 @@ set $mod Mod4
 
 # Start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+n exec i3-sensible-terminal --title "nnn" --command "nnn"
 
 # Start rofi as an application launcher
 bindsym $mod+d exec ~/.dotfiles/common/xkb-force-us.sh rofi -show drun
