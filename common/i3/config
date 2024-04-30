@@ -57,7 +57,9 @@ bindsym $mod+Shift+d exec ~/.dotfiles/common/xkb-force-us.sh rofi -show run
 # Start rofi as a window switcher
 bindsym $mod+m exec ~/.dotfiles/common/xkb-force-us.sh rofi -show window
 # Start rofi as a file browser
-bindsym $mod+f exec ~/.dotfiles/common/xkb-force-us.sh rofi  -show find -modi find:~/.local/share/rofi/finder.sh
+bindsym $mod+f exec ~/.dotfiles/common/xkb-force-us.sh rofi -show find -modi find:~/.local/share/rofi/finder.sh
+# Start rofi as a calculator (rofi-calc)
+bindsym $mod+equal exec ~/.dotfiles/common/xkb-force-us.sh rofi -show calc -modi calc -no-show-match -no-sort
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -192,13 +194,12 @@ set $crust #dce0e8
 
 # target                 title     bg    text   indicator  border
 client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.focused_inactive  $overlay0 $overlay0 $text  $rosewater $overlay0
+client.unfocused         $overlay0 $overlay0 $text  $rosewater $overlay0
+client.urgent            $peach    $overlay0 $peach $overlay0  $peach
+client.placeholder       $overlay0 $overlay0 $text  $overlay0  $overlay0
 client.background        $base
 
-# bar
 bar {
   status_command i3status
 
