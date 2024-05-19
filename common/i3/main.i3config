@@ -1,6 +1,6 @@
 ################################################################################
 #
-## My i3 config
+## My i3 config. Common part for all devices.
 #
 ################################################################################
 
@@ -9,21 +9,23 @@ font pango:JetBrainsMono Nerd Font 10
 # Set up i3lock-color screensaver for this X session
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.dotfiles/common/xkb-force-us.sh i3lock --keylayout 0
 
+# Using XKB, set up:
+# * us and ru keyboard layouts;
+# * shift+alt as layout toggle;
+# * caps as ctrl.
+exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle,ctrl:nocaps
+
 # i3-back: utility to switch to last focused window.
 #
 # Start up the daemon.
 exec --no-startup-id i3-back
 
 ### TODO begin
-exec --no-startup-id setxkbmap -model pc105 -layout us,ru -option grp:alt_shift_toggle,ctrl:nocaps
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-exec --no-startup-id pactl set-default-sink alsa_output.pci-0000_04_00.6.HiFi__hw_Generic_1__sink
-
-exec --no-startup-id xrandr --output eDP --mode "1680x1050"
 ### TODO end
 
 #
@@ -225,4 +227,4 @@ default_border normal 3
 for_window [all] title_window_icon on
 
 # Apply setup-local settings
-include ~/.config/i3/local
+include ~/.config/i3/local.i3config
