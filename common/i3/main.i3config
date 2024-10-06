@@ -4,7 +4,12 @@
 #
 ################################################################################
 
-font pango:CaskaydiaMono NF Regular 11
+# Win (Meta) as the modifier key
+set $mod Mod4
+set $font Hack Regular 10
+font pango:$font
+
+#{{{ STARTUP APPLICATIONS
 
 # Set up i3lock-color screensaver for this X session
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.dotfiles/common/xkb-force-us.sh i3lock --keylayout 0
@@ -23,17 +28,15 @@ exec --no-startup-id i3-back
 # Launch GNOME Keyring daemon for sensitive data management
 exec --no-startup-id gnome-keyring-daemon --start --components=secrets
 
-### TODO begin
-
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-### TODO end
+# Wallpaper
+exec --no-startup-id feh --bg-fill /home/danila/Desktop/clouds-3.jpg &
 
-#
-# Mouse begin
-#
+#}}}
+#{{{MOUSE
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -42,16 +45,8 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-#
-# Mouse end
-#
-
-#
-# Keybinds begin
-#
-
-# Win (Meta) as the modifier key
-set $mod Mod4
+#}}}
+#{{{KEYBINDS
 
 # Start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -163,15 +158,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 # These can be install via apt.
 bindsym Ctrl+Print exec --no-startup-id scrot --freeze - | xclip -selection clipboard -t image/png
 
-#
-# Keybinds end
-#
-
-#
-# Colorscheme begin
-#
-
-exec --no-startup-id feh --bg-fill /home/danila/Desktop/clouds-3.jpg &
+#}}}
+#{{{COLORSCHEME
 
 set $rosewater #f5e0dc
 set $flamingo #f2cdcd
@@ -208,7 +196,8 @@ client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
-# bar
+#}}}
+#{{{BAR
 bar {
   status_command i3blocks
 
@@ -225,15 +214,13 @@ bar {
     urgent_workspace   $base  $red      $crust
   }
 }
-
-#
-# Colorscheme end
-#
+#}}}
 
 gaps inner 8 
 gaps outer 8
 
-for_window [all] title_window_icon on
+default_border pixel 1
+default_floating_border pixel 1
 
 # Apply setup-local settings
 include ~/.config/i3/local.i3config
