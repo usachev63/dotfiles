@@ -9,7 +9,7 @@
 # eDP is the laptop monitor
 # HDMI-A-0 is BenQ 
 
-exec --no-startup-id xrandr --output eDP --mode "1680x1050"
+#exec --no-startup-id xrandr --output eDP --mode "1680x1050"
 
 # END Monitor setup
 
