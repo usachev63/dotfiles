@@ -35,6 +35,8 @@ exec --no-startup-id dex --autostart --environment i3
 # Wallpaper
 exec --no-startup-id feh --bg-fill /home/danila/Desktop/clouds-3.jpg &
 
+exec --no-startup-id picom -b
+
 #}}}
 #{{{MOUSE
 
